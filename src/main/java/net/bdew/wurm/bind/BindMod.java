@@ -39,7 +39,7 @@ public class BindMod implements WurmMod, Initable, PreInitable {
             });
 
             CtClass ctServerLauncher = classPool.getCtClass("com.wurmonline.server.ServerLauncher");
-            ctServerLauncher.getMethod("runServer", "(Z)V").instrument(new ExprEditor() {
+            ctServerLauncher.getMethod("runServer", "(ZZ)V").instrument(new ExprEditor() {
                 @Override
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getMethodName().equals("getByAddress")) {
